@@ -16,11 +16,13 @@ def binary_search(lst, item):
     if len(lst) == 0:
         return False
 
+    # В переменных first и last хранятся границы части списка, в которой происходит поиск
     first = 0
     last = len(lst) - 1
+
     found = False
 
-    while first <= last and not found:
+    while first <= last and not found:  # Пока граница не сократится до одного элемента или не будет найден элемент
         midpoint = (first + last) // 2
         if lst[midpoint] == item:
             found = midpoint
@@ -45,3 +47,12 @@ def binary_search_rec(lst, item):
                 return binary_search_rec(lst[:midpoint], item)
             else:
                 return binary_search_rec(lst[midpoint + 1:], item)
+
+
+"""Сложность алгоритма  O(log2 n)"""
+
+"""
+Задачи.
+1. Максимальное количество проверок для списка из 128 имен при бинарном методе поиска - 7 (2 ** 7 == 128)
+2. Если список увеличится вдвое, то макс.кол-во проверок будет - 8
+"""
